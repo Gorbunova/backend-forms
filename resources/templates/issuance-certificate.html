@@ -1,0 +1,93 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${lang}" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <title>docuForce</title>
+  <link rel="shortcut icon" th:href="@{/assets/issuance_certificate/favicon.ico}" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" media="screen" th:href="@{/assets/issuance_certificate/css/main.css}">
+</head>
+<body>
+<div class="layout">
+  <img th:src="@{/assets/issuance_certificate/img/logo.svg}" class="logo" alt="docuForce">
+
+  <form method="post" th:action="" th:object="">
+    <p class="form_description" th:utext="#{label.form.header.issuance.certificate}">
+      To confirm the issuance of an unqualified electronic signature certificate, enter the last 3 digits of the TIN or SNILS or passport number
+    </p>
+    
+    <div class="alert_wrapper">
+      <p class="alert alert_error" th:utext="#{label.form.alert.invalid.code}">Activation code entered incorrectly</p>
+    </div>
+  
+    <div class="certificate_wrapper">
+      <div class="header">
+        <img th:src="@{/assets/create_user_certificate/img/Rectangle.svg}" alt="design element">
+        <p class="title" th:utext="#{label.form.header.certificate.title}">Certificate</p>
+      </div>
+      
+      <div class="certificate_inner">
+        <div class="user_main_info">
+          <div class="user_name">
+            <p>
+              <span>Константин</span>
+              <span class="patronymic">Иванович</span> <!-- Если отчества нет - не выводить (th:if) -->
+            </p>
+            <p>Константинопольский</p>
+          </div>
+          
+          <p class="org_name">ООО «Документационная логистика»</p>
+        </div>
+        
+        <!-- Если каких-то данных пользователя нет - не выводить соответствующий блок <div class="info_item">...</div> (th:if)-->
+        <div class="user_additional_info">
+          <div class="info_item">
+            <p class="label" th:utext="#{label.form.account.tel}">Phone</p>
+            <p class="value">+7 985 123 45 67</p>
+          </div>
+          <div class="info_item">
+            <label class="label">Email</label>
+            <p class="value email">longnameuser@mailfilebox.ru</p>
+          </div>
+          <div class="info_item">
+            <label class="label" th:utext="#{label.form.account.inn}">TIN</label>
+            <p class="value hidden">12343252</p>
+          </div>
+          <div class="info_item">
+            <label class="label" th:utext="#{label.form.account.snils}">SNILS</label>
+            <p class="value hidden">123-123-12</p>
+          </div>
+          <div class="info_item">
+            <label class="label" th:utext="#{label.form.account.passport}">Passport</label>
+            <p class="value hidden">1234 325</p>
+          </div>
+        </div>
+        
+        <div class="activation_code_wrapper">
+          <label th:utext="#{label.form.three.digits}">3 last digits</label>
+          <div class="input_wrapper input_numbers">
+            <div class="element_wrapper activation_code_wrapper"> <!-- element_wrapper_error - добавить класс при наличии ошибки в input, подсветка красным -->
+              <!-- Когда пользователь начинает вводить в input, подсветка пропадает -->
+              <input name="activation_code" id="activation_code" maxlength="3" class="element element_numbers" oninput="handleChangeCode()"/>
+              <span class="element_wrapper_icon">
+                <svg width="12" height="12" class="icon_lock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 14">
+                  <path
+                      d="M3.182 6.364v-1.91A2.55 2.55 0 015.727 1.91a2.55 2.55 0 012.546 2.546v1.909H3.182zm8.272.954a.955.955 0 00-.954-.954h-.318v-1.91C10.182 2.01 8.173 0 5.727 0S1.273 2.009 1.273 4.455v1.909H.955A.955.955 0 000 7.318v5.727c0 .527.428.955.955.955H10.5a.955.955 0 00.954-.955V7.318z"></path>
+                </svg>
+              </span>
+            </div>
+          </div>
+          <img th:src="@{/assets/create_user_certificate/img/cert.svg}" class="cert_icon" alt="certificate">
+        </div>
+        
+      </div>
+    </div>
+    
+    <button type="submit" class="button_submit" th:utext="#{label.form.confirm.certificate}">Confirm certificate issue</button>
+  </form>
+</div>
+
+<script th:src="@{/assets/issuance_certificate/js/main.js}"></script>
+
+</body>
+</html>

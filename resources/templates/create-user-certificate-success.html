@@ -1,0 +1,28 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${lang}" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <title>docuForce</title>
+  <link rel="shortcut icon" th:href="@{/assets/create_user_certificate/favicon.ico}" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" media="screen" th:href="@{/assets/create_user_certificate/css/main.css}">
+  <link rel="stylesheet" type="text/css" media="screen" th:href="@{/assets/create_user_certificate/css/success.css}">
+</head>
+<body>
+<div class="layout">
+  <img th:src="@{/assets/create_user_certificate/img/logo.svg}" class="logo" alt="docuForce">
+  
+  <p class="form_description" th:utext="#{label.form.header.completion.registration}">Сompletion of registration</p>
+  
+  <div class="alert_wrapper">
+    <p class="alert alert_success" th:utext="#{label.form.alert.registration.certificate.success}">
+      Password set, certificate issue confirmed, registration completed
+    </p>
+  </div>
+  <a href="" th:href="@{${returnUrlPath}}" class="back" th:text="#{label.form.back.to.login}">
+    Back to Login
+  </a>
+</div>
+
+</body>
+</html>
